@@ -6,7 +6,7 @@
 <br>
 原作者：RyiSnow\
 參照資料： https://www.youtube.com/watch?v=om59cwR7psI&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=1&ab_channel=RyiSnow\
-<br>
+<br><br>
 備註：
 1. 此次作業因為時間關係，只有完成到影片第十集以前的內容，並未加入任何打鬥內容。
 2. 歡迎取用我們的 Source Code，但程式及資產版權屬於原作者。
