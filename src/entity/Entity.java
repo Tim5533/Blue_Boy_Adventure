@@ -7,10 +7,10 @@ public class Entity {
     public int x, y;
     public int speed;
 
-    File boy_up_1 = new File("res\\player\\boy_down_1.png");
+    File boy_up_1 = new File("res\\player\\boy_up_1.png");
     File boy_up_2 = new File("res\\player\\boy_up_2.png");
-    File boy_down_1 = new File("res\\player\\boy_up_1.png");
-    File boy_down_2 = new File("res\\player\\boy_up_2.png");
+    File boy_down_1 = new File("res\\player\\boy_down_1.png");
+    File boy_down_2 = new File("res\\player\\boy_down_2.png");
     File boy_left_1 = new File("res\\player\\boy_left_1.png");
     File boy_left_2 = new File("res\\player\\boy_left_2.png");
     File boy_right_1 = new File("res\\player\\boy_right_1.png");
