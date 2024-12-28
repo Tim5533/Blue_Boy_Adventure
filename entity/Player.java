@@ -1,12 +1,10 @@
 package entity;
-
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import main.*;
+
+import java.io.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 public class Player extends Entity{
 
@@ -31,8 +29,8 @@ public class Player extends Entity{
     }
 
     public void getPlayerImage() {
-        try{
-
+        try
+        {
             up1 = ImageIO.read(getClass().getResource("res\\player\\boy_up_1.png"));
             up2 = ImageIO.read(getClass().getResource("res\\player\\boy_up_2.png"));
             down1 = ImageIO.read(getClass().getResource("res\\player\\boy_down_1.png"));
@@ -43,7 +41,9 @@ public class Player extends Entity{
             right2 = ImageIO.read(getClass().getResource("res\\player\\boy_right_2.png"));
 
 
-        }catch(IOException e) {
+        }
+        catch(IOException e) 
+        {
             e.printStackTrace();
         }
     }
