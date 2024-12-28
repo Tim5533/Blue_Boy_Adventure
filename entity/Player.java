@@ -2,7 +2,7 @@ package entity;
 import main.*;
 
 import java.io.*;
-import java.awt.*;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
@@ -31,16 +31,14 @@ public class Player extends Entity{
     public void getPlayerImage() {
         try
         {
-            up1 = ImageIO.read(getClass().getResource("res\\player\\boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResource("res\\player\\boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResource("res\\player\\boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResource("res\\player\\boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResource("res\\player\\boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResource("res\\player\\boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResource("res\\player\\boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResource("res\\player\\boy_right_2.png"));
-
-
+            up1 = ImageIO.read(boy_up_1);
+            up2 = ImageIO.read(boy_up_2);
+            down1 = ImageIO.read(boy_down_1);
+            down2 = ImageIO.read(boy_down_2);
+            left1 = ImageIO.read(boy_left_1);
+            left2 = ImageIO.read(boy_left_2);
+            right1 = ImageIO.read(boy_right_1);
+            right2 = ImageIO.read(boy_right_2);
         }
         catch(IOException e) 
         {
@@ -51,7 +49,7 @@ public class Player extends Entity{
     public void update() {
         if (KeyH.upPressed == true || KeyH.downPressed == true 
             || KeyH.leftPressed == true || KeyH.rightPressed == true){
-
+                
                 if (KeyH.upPressed == true){
                     direction = "up";
                     y -= speed;
@@ -89,7 +87,6 @@ public class Player extends Entity{
 
     public void draw(Graphics2D g2){
 
-
         BufferedImage image = null;
         
         switch (direction) {
@@ -125,7 +122,6 @@ public class Player extends Entity{
                     image = right2;
                 }
                 break;
-
         }
 
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);

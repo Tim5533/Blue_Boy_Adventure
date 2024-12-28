@@ -1,9 +1,8 @@
 package main;
+import entity.*;
 
 import java.awt.*;
 import javax.swing.*;
-
-import entity.Player;
 
 public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16; // 16*16 tiles 
@@ -52,7 +51,6 @@ public class GamePanel extends JPanel implements Runnable{
         long lastTime = System.nanoTime();
         long currentTime;
         long timer = 0;
-        int drawCount = 0;
 
         while (gameThread != null) {
 
@@ -70,13 +68,10 @@ public class GamePanel extends JPanel implements Runnable{
 
                 // DRAW: draw the screen with the update information
                 repaint(); // 呼叫paintComponent的方法
-            
+
                 delta--;
-                drawCount++;
             }
             if (timer >= 1000000000){
-                System.out.println("FPS:"+drawCount);
-                drawCount = 0;
                 timer = 0;
             }
         }
