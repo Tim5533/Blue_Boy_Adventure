@@ -31,14 +31,15 @@ public class Player extends Entity{
     public void getPlayerImage() {
         try
         {
-            up1 = ImageIO.read(boy_up_1);
-            up2 = ImageIO.read(boy_up_2);
-            down1 = ImageIO.read(boy_down_1);
-            down2 = ImageIO.read(boy_down_2);
-            left1 = ImageIO.read(boy_left_1);
-            left2 = ImageIO.read(boy_left_2);
-            right1 = ImageIO.read(boy_right_1);
-            right2 = ImageIO.read(boy_right_2);
+            // 圖片檔案在 Entity.java 
+            up1 = ImageIO.read(Entity.boy_up_1);
+            up2 = ImageIO.read(Entity.boy_up_2);
+            down1 = ImageIO.read(Entity.boy_down_1);
+            down2 = ImageIO.read(Entity.boy_down_2);
+            left1 = ImageIO.read(Entity.boy_left_1);
+            left2 = ImageIO.read(Entity.boy_left_2);
+            right1 = ImageIO.read(Entity.boy_right_1);
+            right2 = ImageIO.read(Entity.boy_right_2);
         }
         catch(IOException e) 
         {

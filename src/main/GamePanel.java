@@ -1,5 +1,6 @@
 package main;
 import entity.*;
+import tile.*;
 
 import java.awt.*;
 import javax.swing.*;
@@ -10,22 +11,18 @@ public class GamePanel extends JPanel implements Runnable{
 
     // SCREEN SETTING
     public final int tileSize = originalTileSize * scale; // 48*48 tiles
-    final int maxScreenCol = 16; // 將螢幕分成 16*12 格
-    final int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol; // 768 pixcels
-    final int screenHeight = tileSize * maxScreenRow; // 576 pixcels
+    public final int maxScreenCol = 16; // 將螢幕分成 16*12 格
+    public final int maxScreenRow = 12;
+    public final int screenWidth = tileSize * maxScreenCol; // 768 pixcels
+    public final int screenHeight = tileSize * maxScreenRow; // 576 pixcels
 
     // FPS
     int FPS = 60;
 
+    TileManager tileM = new TileManager(this);
     KeyHandler KeyH = new KeyHandler();
     Thread gameThread;//多執行續繼承的class，物件代表一個執行續(Thread也實作了Runnable)
     Player player = new Player(this, KeyH);
-
-    // Set player's default position
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
 
     public GamePanel() { // 呼叫繼承來的函式，可不加this(加了可增強可讀性)，或是可以改成super
 
@@ -89,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D)g;
 
+        tileM.draw(g2);
         player.draw(g2);
 
         g2.dispose();
