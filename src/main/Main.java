@@ -18,6 +18,7 @@ public class Main {
         window.setLocationRelativeTo(null);//設定視窗和指定component的相對位置，null放中間
         window.setVisible(true);
 
+        gamePanel.setupGame();
         gamePanel.startGameThread();
     }
 }
