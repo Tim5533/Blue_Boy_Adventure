@@ -16,13 +16,19 @@ public class GamePanel extends JPanel implements Runnable{
     public final int screenWidth = tileSize * maxScreenCol; // 768 pixcels
     public final int screenHeight = tileSize * maxScreenRow; // 576 pixcels
 
+    // WORLD SETTING
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow = 50;
+    public final int worldWidth = tileSize * maxScreenCol;
+    public final int worldHeight = tileSize * maxScreenRow;
+
     // FPS
     int FPS = 60;
 
     TileManager tileM = new TileManager(this);
     KeyHandler KeyH = new KeyHandler();
     Thread gameThread;//多執行續繼承的class，物件代表一個執行續(Thread也實作了Runnable)
-    Player player = new Player(this, KeyH);
+    public Player player = new Player(this, KeyH);
 
     public GamePanel() { // 呼叫繼承來的函式，可不加this(加了可增強可讀性)，或是可以改成super
 
