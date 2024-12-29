@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 public class TileManager {
 
     GamePanel gp;
-    Tile[] tile;
-    int mapTileNum[][];
+    public Tile[] tile;
+    public int mapTileNum[][];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -31,15 +31,18 @@ public class TileManager {
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(Tile.wall);
+            tile[1].collision = true;
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(Tile.water);
+            tile[2].collision = true;
 
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(Tile.earth);
 
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(Tile.tree);
+            tile[4].collision = true;
 
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(Tile.sand);
@@ -105,10 +108,10 @@ public class TileManager {
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
             // 若地塊超出螢幕邊界，就不畫出
-            if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY ) 
+            if (worldX + 2*gp.tileSize > gp.player.worldX - gp.player.screenX &&
+                worldX - 2*gp.tileSize < gp.player.worldX + gp.player.screenX &&
+                worldY + 2*gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                worldY - 2*gp.tileSize < gp.player.worldY + gp.player.screenY ) 
             {
                 g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
             }

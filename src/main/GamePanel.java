@@ -25,19 +25,19 @@ public class GamePanel extends JPanel implements Runnable{
     // FPS
     int FPS = 60;
 
-    TileManager tileM = new TileManager(this);
+    Thread gameThread;      // 多執行續繼承的class，物件代表一個執行續(Thread也實作了Runnable)
     KeyHandler KeyH = new KeyHandler();
-    Thread gameThread;//多執行續繼承的class，物件代表一個執行續(Thread也實作了Runnable)
     public Player player = new Player(this, KeyH);
+    public TileManager tileM = new TileManager(this);
+    public CollisionChecker cChecker = new CollisionChecker(this);     // 碰撞偵測
 
     public GamePanel() { // 呼叫繼承來的函式，可不加this(加了可增強可讀性)，或是可以改成super
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
-        this.setDoubleBuffered(true); // 減少閃爍，(可以先將繪圖操作在影藏緩衝區完成，再一次展現
+        this.setDoubleBuffered(true); // 減少閃爍，(可以先將繪圖操作在影藏緩衝區完成，再一次展現)
         this.addKeyListener(KeyH);
         this.setFocusable(true);//可收到輸入
-
     }
 
     public void startGameThread() {

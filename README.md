@@ -1,4 +1,4 @@
-# Blue_Boy_Adventure
+# Treasure_Hunting_RPG
 
 說明： 這是我們的期末 Java 專案，一個簡單的 RPG 遊戲。\
 作者：陳柏諺、饒明軒\
