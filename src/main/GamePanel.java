@@ -1,5 +1,6 @@
 package main;
 import entity.*;
+import object.SuperObject;
 import tile.*;
 
 import java.awt.*;
@@ -25,11 +26,14 @@ public class GamePanel extends JPanel implements Runnable{
     // FPS
     int FPS = 60;
 
+    public TileManager tileM = new TileManager(this); // 影片裡非public
+    KeyHandler KeyH = new KeyHandler(); 
     Thread gameThread;      // 多執行續繼承的class，物件代表一個執行續(Thread也實作了Runnable)
-    KeyHandler KeyH = new KeyHandler();
-    public Player player = new Player(this, KeyH);
-    public TileManager tileM = new TileManager(this);
     public CollisionChecker cChecker = new CollisionChecker(this);     // 碰撞偵測
+    public AssetSetter aSetter = new AssetSetter(this);
+    public Player player = new Player(this, KeyH);
+    public SuperObject obj[] = new SuperObject[10];
+    
 
     public GamePanel() { // 呼叫繼承來的函式，可不加this(加了可增強可讀性)，或是可以改成super
 
@@ -38,6 +42,11 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true); // 減少閃爍，(可以先將繪圖操作在影藏緩衝區完成，再一次展現)
         this.addKeyListener(KeyH);
         this.setFocusable(true);//可收到輸入
+    }
+
+    public void setupGame() {
+
+        aSetter.setObject();
     }
 
     public void startGameThread() {
@@ -92,7 +101,17 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D)g;
 
+        //TILE
         tileM.draw(g2);
+
+        //OBEJECT
+        for(int i = 0; i < obj.length; i++) {
+            if(obj[i] != null) {
+                obj[i].draw(g2, this);
+            }
+        }
+
+        //PLAYER
         player.draw(g2);
 
         g2.dispose();
