@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int worldHeight = tileSize * maxScreenRow;
 
     // FPS
-    int FPS = 60;
+    public final int FPS = 60;
 
     // SYSTEM
     public TileManager tileM = new TileManager(this);
@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable{
     Sound se = new Sound();
     public CollisionChecker cChecker = new CollisionChecker(this);     // 碰撞偵測
     public AssetSetter aSetter = new AssetSetter(this);
+    public UI ui = new UI(this);
     Thread gameThread;      // 多執行續繼承的class，物件代表一個執行續(Thread也實作了Runnable)
 
     // ENTITY AND OBJECT
@@ -108,18 +109,21 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D)g;
 
-        //TILE
+        // TILE
         tileM.draw(g2);
 
-        //OBEJECT
+        // OBEJECT
         for (int i = 0; i < obj.length; i++) {
             if(obj[i] != null) {
                 obj[i].draw(g2, this);
             }
         }
 
-        //PLAYER
+        // PLAYER
         player.draw(g2);
+
+        // UI
+        ui.draw(g2);
 
         g2.dispose();
     }
