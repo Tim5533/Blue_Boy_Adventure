@@ -1,5 +1,6 @@
 package main;
 import object.*;
+import entity.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,6 +18,14 @@ public class UI {
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
+    
+    // Game Over
+    GameOver gameover;
+    double stopTimeCounter = 0;
+    boolean loseSdPlay = true;
+    public boolean gameOvered = false;
+
+    int sparkle = 0;
 
     public UI (GamePanel gp) {
         this.gp = gp;
@@ -25,6 +34,8 @@ public class UI {
         arialB = new Font("Arial", Font.BOLD, 80);
         OBJ_Key key = new OBJ_Key();
         keyImage = key.image;
+        
+        gameover = new GameOver(gp);
     }
 
     public void showMessage (String text) {
@@ -68,6 +79,27 @@ public class UI {
             gp.gameThread = null;
 
         }
+        else if (playTime >= gp.gameLimit) {
+
+            gameOvered = true;
+
+            if (stopTimeCounter == 0) {
+                gp.stopMusic();
+            }
+
+            if (stopTimeCounter == gp.FPS * 0.5f) {
+                gameover.playLoseSound(loseSdPlay);
+                loseSdPlay = false;
+            }
+            
+            if (stopTimeCounter == gp.FPS * 2.4f) {
+                gameover.draw(g2);
+                gameover.playGameOverSound();
+                gp.gameThread = null;
+            }
+            
+            stopTimeCounter ++;
+        }
         else {
             g2.setFont(arial);
             g2.setColor(Color.white);
@@ -91,6 +123,20 @@ public class UI {
                     messageOn = false;
                 }
             }
+
+            // HURRY!
+            if (playTime >= gp.hurryTime-0.5 && sparkle >= gp.FPS*0.5) {
+
+                g2.setFont(g2.getFont().deriveFont(Font.BOLD ,26F));
+                g2.setColor(Color.red);
+                g2.drawString("HURRY!", 533, 105);
+            }
+
+            if (sparkle >= gp.FPS*1){
+                sparkle = 0;
+            }
+            
+            sparkle ++;
         }
     }
 

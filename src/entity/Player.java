@@ -65,8 +65,9 @@ public class Player extends Entity{
     }
 
     public void update() {
-        if (KeyH.upPressed == true || KeyH.downPressed == true 
-            || KeyH.leftPressed == true || KeyH.rightPressed == true){
+        if ( (KeyH.upPressed == true || KeyH.downPressed == true 
+            || KeyH.leftPressed == true || KeyH.rightPressed == true )
+            && gp.ui.gameOvered == false ) {
                 
                 if (KeyH.upPressed == true){
                     direction = "up";
@@ -133,7 +134,7 @@ public class Player extends Entity{
                     gp.playSE(1);
                     hasKey++;
                     gp.obj[i] = null;
-                    gp.ui.showMessage("You got a key!");
+                    gp.ui.showMessage("Get a Key");
                     break;
 
                 case "Door":
@@ -141,10 +142,10 @@ public class Player extends Entity{
                         gp.playSE(3);
                         gp.obj[i] = null;
                         hasKey--;
-                        gp.ui.showMessage("You Open the door!");
+                        gp.ui.showMessage("Open Door");
                     }
                     else {
-                        gp.ui.showMessage("You need a key!");
+                        gp.ui.showMessage("Need a Key");
                     }
                     break;
                 case "Boots":
@@ -152,7 +153,7 @@ public class Player extends Entity{
                         gp.playSE(2);
                         speed += 1;
                         gp.obj[i] = null;
-                        gp.ui.showMessage("Speed Up!");
+                        gp.ui.showMessage("Speed Up");
                     }
                     break;
                 case "Chest":

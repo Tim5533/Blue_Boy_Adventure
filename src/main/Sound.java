@@ -8,20 +8,22 @@ import javax.sound.sampled.Clip;
 public class Sound {
 
     Clip clip;
-    File sounfFiles[] = new File[30];
+    File soundfFiles[] = new File[30];
 
     public Sound() {
-        sounfFiles[0] = new File("res\\sound\\BlueBoyAdventure.wav");
-        sounfFiles[1] = new File("res\\sound\\coin.wav");
-        sounfFiles[2] = new File("res\\sound\\powerup.wav");
-        sounfFiles[3] = new File("res\\sound\\unlock.wav");
-        sounfFiles[4] = new File("res\\sound\\fanfare.wav");
+        soundfFiles[0] = new File("res\\sound\\BlueBoyAdventure.wav");
+        soundfFiles[1] = new File("res\\sound\\coin.wav");
+        soundfFiles[2] = new File("res\\sound\\powerup.wav");
+        soundfFiles[3] = new File("res\\sound\\unlock.wav");
+        soundfFiles[4] = new File("res\\sound\\fanfare.wav");
+        soundfFiles[5] = new File("res\\sound\\gameover.wav");
+        soundfFiles[6] = new File("res\\sound\\hitmonster.wav");
     }
 
     public void setFile(int i) {
         try
         {
-            AudioInputStream ais = AudioSystem.getAudioInputStream(sounfFiles[i]);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(soundfFiles[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
         }
