@@ -73,7 +73,7 @@ public class CollisionChecker {
 
         int index = 999;
 
-        for(int i = 0; i < gp.obj.length; i++) {
+        for (int i = 0; i < gp.obj.length; i++) {
 
             if(gp.obj[i] != null){
                 

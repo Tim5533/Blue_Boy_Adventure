@@ -24,6 +24,7 @@ public class Player extends Entity{
         screenX = gp.screenWidth / 2 - (gp.tileSize/2);
         screenY = gp.screenHeight / 2 - (gp.tileSize/2);
 
+        // 設定玩家碰撞區域
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y = 16;
@@ -132,16 +133,23 @@ public class Player extends Entity{
                 case "Key":
                     hasKey++;
                     gp.obj[i] = null;
-                    System.out.println("key:"+hasKey);
+                    System.out.println("Key: "+hasKey);
                     break;
+
                 case "Door":
                     if(hasKey > 0){
                         gp.obj[i] = null;
                         hasKey--;
-                        System.out.println("key:"+hasKey);
+                        System.out.println("Key: "+hasKey);
                     }
                     break;
-                
+                case "Boots":
+                    if(hasKey > 0){
+                        speed += 1;
+                        gp.obj[i] = null;
+                        System.out.println("Speed Up!");
+                    }
+                    break;
             }
         }
     }

@@ -1,8 +1,6 @@
 package object;
 
-import java.io.File;
-import java.io.IOException;
-
+import java.io.*;
 import javax.imageio.ImageIO;
 
 public class OBJ_Chest extends SuperObject{
@@ -12,10 +10,12 @@ public class OBJ_Chest extends SuperObject{
     public OBJ_Chest() {
         
         name = "Chest";
-        try {
+        try 
+        {
             image = ImageIO.read(chest);
-
-        } catch (IOException e) {
+        } 
+        catch (IOException e) 
+        {
             e.printStackTrace();
         }
     }

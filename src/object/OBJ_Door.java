@@ -1,8 +1,6 @@
 package object;
 
-import java.io.File;
-import java.io.IOException;
-
+import java.io.*;
 import javax.imageio.ImageIO;
 
 public class OBJ_Door extends SuperObject{
@@ -12,10 +10,12 @@ public class OBJ_Door extends SuperObject{
     public OBJ_Door() {
         
         name = "Door";
-        try {
+        try 
+        {
             image = ImageIO.read(door);
-
-        } catch (IOException e) {
+        } 
+        catch (IOException e) 
+        {
             e.printStackTrace();
         }
         collision = true;

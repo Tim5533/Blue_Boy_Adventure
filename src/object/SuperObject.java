@@ -1,10 +1,8 @@
 package object;
+import main.*;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-
-import main.GamePanel;
 
 public class SuperObject {
 
@@ -18,6 +16,7 @@ public class SuperObject {
 
     public void draw(Graphics2D g2, GamePanel gp) {
 
+        // 螢幕座標 (相對玩家的座標)
         int screenX = worldX - gp.player.worldX + gp.player.screenX;    
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
@@ -25,8 +24,8 @@ public class SuperObject {
         if (worldX + 2*gp.tileSize > gp.player.worldX - gp.player.screenX &&
             worldX - 2*gp.tileSize < gp.player.worldX + gp.player.screenX &&
             worldY + 2*gp.tileSize > gp.player.worldY - gp.player.screenY &&
-            worldY - 2*gp.tileSize < gp.player.worldY + gp.player.screenY ) {
-                
+            worldY - 2*gp.tileSize < gp.player.worldY + gp.player.screenY ) 
+        {
             g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         }
     }

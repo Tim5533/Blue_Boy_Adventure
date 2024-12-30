@@ -1,6 +1,6 @@
 package main;
 import entity.*;
-import object.SuperObject;
+import object.*;
 import tile.*;
 
 import java.awt.*;
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable{
         tileM.draw(g2);
 
         //OBEJECT
-        for(int i = 0; i < obj.length; i++) {
+        for (int i = 0; i < obj.length; i++) {
             if(obj[i] != null) {
                 obj[i].draw(g2, this);
             }
