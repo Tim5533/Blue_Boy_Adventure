@@ -29,7 +29,8 @@ public class GamePanel extends JPanel implements Runnable{
     // SYSTEM
     public TileManager tileM = new TileManager(this);
     KeyHandler KeyH = new KeyHandler(); 
-    Sound sound = new Sound();
+    Sound music = new Sound();
+    Sound se = new Sound();
     public CollisionChecker cChecker = new CollisionChecker(this);     // 碰撞偵測
     public AssetSetter aSetter = new AssetSetter(this);
     Thread gameThread;      // 多執行續繼承的class，物件代表一個執行續(Thread也實作了Runnable)
@@ -85,7 +86,7 @@ public class GamePanel extends JPanel implements Runnable{
                 update();
 
                 // DRAW: draw the screen with the update information
-                repaint(); // 呼叫paintComponent的方法
+                repaint();  // 呼叫paintComponent的方法
 
                 delta--;
             }
@@ -124,17 +125,17 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void playMusic (int i) {
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+        music.setFile(i);
+        music.play();
+        music.loop();
     }
 
     public void stopMusic() {
-        sound.stop();
+        music.stop();
     }
 
     public void playSE (int i) {
-        sound.setFile(i);
-        sound.play();
+        se.setFile(i);
+        se.play();
     }
 }
