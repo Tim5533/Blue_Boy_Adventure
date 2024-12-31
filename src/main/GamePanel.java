@@ -42,8 +42,6 @@ public class GamePanel extends JPanel implements Runnable{
 
     // Game Over
     GameOver gameover;
-    int gameLimit = 40;
-    int hurryTime = 33;
 
     public GamePanel() {    // 呼叫繼承來的函式，可不加this(加了可增強可讀性)，或是可以改成super
 

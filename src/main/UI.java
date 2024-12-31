@@ -1,6 +1,5 @@
 package main;
 import object.*;
-import entity.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -79,7 +78,7 @@ public class UI {
             gp.gameThread = null;
 
         }
-        else if (playTime >= gp.gameLimit) {
+        else if (playTime >= Main.gameLimit) {
 
             gameOvered = true;
 
@@ -125,7 +124,7 @@ public class UI {
             }
 
             // HURRY!
-            if (playTime >= gp.hurryTime-0.5 && sparkle >= gp.FPS*0.5) {
+            if (playTime >= Main.hurryTime-0.5 && sparkle >= gp.FPS*0.5) {
 
                 g2.setFont(g2.getFont().deriveFont(Font.BOLD ,26F));
                 g2.setColor(Color.red);

@@ -3,6 +3,10 @@ package main;
 import javax.swing.*;
 
 public class Main {
+    public static boolean CollisonMod = true;
+    public static int hurryTime = 30;
+    public static int gameLimit = 35;
+
     public static void main(String[] args) {
         JFrame window = new JFrame();
         //設定

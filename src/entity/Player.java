@@ -26,12 +26,12 @@ public class Player extends Entity{
 
         // 設定玩家碰撞區域
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.x = 9;
+        solidArea.y = 14;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 32;
-        solidArea.height = 32;
+        solidArea.width = 30;
+        solidArea.height = 30;
 
         setDefaultValues();
         getPlayerImage();
@@ -136,7 +136,6 @@ public class Player extends Entity{
                     gp.obj[i] = null;
                     gp.ui.showMessage("Get a Key");
                     break;
-
                 case "Door":
                     if (hasKey > 0){
                         gp.playSE(3);
@@ -149,12 +148,10 @@ public class Player extends Entity{
                     }
                     break;
                 case "Boots":
-                    if(hasKey > 0){
-                        gp.playSE(2);
-                        speed += 1;
-                        gp.obj[i] = null;
-                        gp.ui.showMessage("Speed Up");
-                    }
+                    gp.playSE(2);
+                    speed += 1;
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("Speed Up");
                     break;
                 case "Chest":
                     gp.ui.gameFinished = true;
@@ -205,6 +202,13 @@ public class Player extends Entity{
         }
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+        // Collision Mod
+        if (Main.CollisonMod)
+        {
+            g2.setColor(Color.red);
+            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+        }
 
     }
 }
