@@ -14,6 +14,7 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
     public int hasKey = 0;
+    int standCounter = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         
@@ -67,8 +68,8 @@ public class Player extends Entity{
     public void update() {
         if ( (KeyH.upPressed == true || KeyH.downPressed == true 
             || KeyH.leftPressed == true || KeyH.rightPressed == true )
-            && gp.ui.gameOvered == false ) {
-                
+            && gp.ui.gameOvered == false ) 
+            {
                 if (KeyH.upPressed == true){
                     direction = "up";
                 }
@@ -120,6 +121,15 @@ public class Player extends Entity{
         
                     spriteCounter = 0;
                 }
+            }
+            else {
+                // 若超過 0.7 秒就回復 boy_up_1
+                if (standCounter == 0.7 * gp.FPS) {
+                    spriteNum = 1;
+                    standCounter = 0;
+                }
+
+                standCounter ++;
             }
     }
 
